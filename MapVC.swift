@@ -10,31 +10,41 @@ import UIKit
 import GoogleMaps
 
 class MapVC: UIViewController {
-    
-    let friendName = "David"
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("MapVC loaded!")
         
         let camera = GMSCameraPosition.cameraWithLatitude(44.0083,
-                                                          longitude: -73.180051, zoom: 10)
-        let mapView = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
-        mapView.myLocationEnabled = true
-        self.view = mapView
+                                                          longitude: -73.180051, zoom: 13)
         
+        //let mapFrame = CGRect(x: 0, y: 46, width: 605, height: 510)
+
+        let mapFrame = GMSMapView.mapWithFrame(CGRect(x: 0, y: 46, width: 605, height: 510), camera: camera)
+        
+        
+       self.view.addSubview(mapFrame)
         
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2DMake(44.0083, -73.180051)
-
+        
         marker.title = "Middlebury College"
         marker.snippet = "Middlebury"
-        marker.map = mapView
+        marker.map = mapFrame
         
-        let friend = GMSMarker()
         
-        friend.title = friendName
-        friend.position = CLLocationCoordinate2DMake(44.0083, -75.180052)
-        friend.icon = GMSMarker.markerImageWithColor(UIColor.blueColor())
+//        let mapView = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
+//        mapView.myLocationEnabled = true
+//        self.view = mapView
+//        
+//        
+//        let marker = GMSMarker()
+//        marker.position = CLLocationCoordinate2DMake(44.0083, -73.180051)
+//
+//        marker.title = "Middlebury College"
+//        marker.snippet = "Middlebury"
+//        marker.map = mapView
+        
         
         
     }

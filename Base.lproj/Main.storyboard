@@ -2,12 +2,13 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Zg5-Qh-N8O">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--LoginVC-->
+        <!--Sign InVC-->
         <scene sceneID="rmf-jF-CUa">
             <objects>
-                <viewController id="Zg5-Qh-N8O" customClass="LoginVC" customModule="HerdBeta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Zg5-Qh-N8O" customClass="SignInVC" customModule="HerdBeta" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="f6Q-D0-g6k"/>
                         <viewControllerLayoutGuide type="bottom" id="EvX-I5-gef"/>
@@ -16,12 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Herd Beta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCS-uy-RYO">
-                                <rect key="frame" x="232" y="151" width="137" height="37"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jnK-9f-c8D">
                                 <rect key="frame" x="266" y="368" width="68" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -71,6 +66,15 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="HerdIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Adf-0E-3At">
+                                <rect key="frame" x="271" y="85" width="58" height="58"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Herd Beta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCS-uy-RYO">
+                                <rect key="frame" x="232" y="151" width="137" height="37"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -210,31 +214,98 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ssp-eb-ugN">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hXA-um-fVc">
+                                <rect key="frame" x="0.0" y="46" width="605" height="510"/>
+                                <connections>
+                                    <segue destination="Sfg-6k-fqo" kind="embed" id="jEW-gK-vS5"/>
+                                </connections>
+                            </containerView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="0U2-u2-L88">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <outlet property="delegate" destination="eIN-u6-i1r" id="8iJ-kN-k0R"/>
+                                    <outlet property="delegate" destination="eIN-u6-i1r" id="11R-M0-Bv8"/>
                                 </connections>
                             </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ywO-ns-CsM">
+                                <rect key="frame" x="546" y="0.0" width="54" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="54" id="b0v-ZF-6OZ"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="Waypoint.png"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0U2-u2-L88" firstAttribute="top" secondItem="hXA-um-fVc" secondAttribute="bottom" id="83g-Mp-719"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hXA-um-fVc" secondAttribute="trailing" constant="-25" id="Ayf-NL-8qO"/>
+                            <constraint firstItem="hXA-um-fVc" firstAttribute="leading" secondItem="Y4h-D0-pNg" secondAttribute="leading" id="CZP-t2-wda"/>
+                            <constraint firstItem="0U2-u2-L88" firstAttribute="centerX" secondItem="Y4h-D0-pNg" secondAttribute="centerX" id="LoB-Tm-LtI"/>
+                            <constraint firstItem="ywO-ns-CsM" firstAttribute="top" secondItem="7vh-WK-QeH" secondAttribute="bottom" id="MQI-mE-Zml"/>
+                            <constraint firstItem="0U2-u2-L88" firstAttribute="trailing" secondItem="ywO-ns-CsM" secondAttribute="trailing" id="RwO-YF-AIN"/>
+                            <constraint firstItem="hXA-um-fVc" firstAttribute="leading" secondItem="0U2-u2-L88" secondAttribute="leading" id="S8Z-yP-PC2"/>
+                            <constraint firstItem="hXA-um-fVc" firstAttribute="centerX" secondItem="Y4h-D0-pNg" secondAttribute="centerX" id="Vju-gB-kOS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hXA-um-fVc" secondAttribute="trailing" constant="-25" id="aFq-t1-jUu"/>
+                            <constraint firstItem="hXA-um-fVc" firstAttribute="top" secondItem="7vh-WK-QeH" secondAttribute="bottom" constant="46" id="lgz-JU-VqE"/>
+                            <constraint firstItem="0U2-u2-L88" firstAttribute="top" secondItem="hXA-um-fVc" secondAttribute="bottom" id="mXS-HO-olt"/>
+                            <constraint firstItem="0U2-u2-L88" firstAttribute="bottom" secondItem="7Yj-sT-HsD" secondAttribute="top" id="tBm-my-aCj"/>
+                            <constraint firstItem="0U2-u2-L88" firstAttribute="leading" secondItem="Y4h-D0-pNg" secondAttribute="leading" id="tqJ-RB-o8x"/>
+                            <constraint firstItem="0U2-u2-L88" firstAttribute="leading" secondItem="hXA-um-fVc" secondAttribute="leading" id="uNf-CK-kS2"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Vju-gB-kOS"/>
+                                <exclude reference="aFq-t1-jUu"/>
+                                <exclude reference="tqJ-RB-o8x"/>
+                                <exclude reference="uNf-CK-kS2"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
-                        <outlet property="searchDisplayController" destination="Ziv-kw-9na" id="Kpe-Nc-F1W"/>
+                        <outlet property="searchDisplayController" destination="xZD-gi-wxT" id="lMI-ZC-LGS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="asf-Vv-Iiz" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <searchDisplayController id="Ziv-kw-9na">
                     <connections>
                         <outlet property="delegate" destination="eIN-u6-i1r" id="w6N-4H-FHB"/>
-                        <outlet property="searchBar" destination="ssp-eb-ugN" id="RdO-VI-5Ts"/>
                         <outlet property="searchContentsController" destination="eIN-u6-i1r" id="ryc-cV-qT7"/>
                         <outlet property="searchResultsDataSource" destination="eIN-u6-i1r" id="kbt-8Y-t0k"/>
                         <outlet property="searchResultsDelegate" destination="eIN-u6-i1r" id="iSC-CQ-heZ"/>
                     </connections>
                 </searchDisplayController>
+                <searchDisplayController id="xZD-gi-wxT">
+                    <connections>
+                        <outlet property="delegate" destination="eIN-u6-i1r" id="oJO-W5-T9f"/>
+                        <outlet property="searchBar" destination="0U2-u2-L88" id="zH8-rB-Ofi"/>
+                        <outlet property="searchContentsController" destination="eIN-u6-i1r" id="dPO-Bx-EzN"/>
+                        <outlet property="searchResultsDataSource" destination="eIN-u6-i1r" id="l38-a6-xug"/>
+                        <outlet property="searchResultsDelegate" destination="eIN-u6-i1r" id="SMP-mf-sG2"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="1385" y="-696"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="qLc-dD-J5F">
+            <objects>
+                <viewController id="Sfg-6k-fqo" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WwG-OV-4BJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="tGy-Ky-xj9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GTa-ea-bUs">
+                        <rect key="frame" x="0.0" y="0.0" width="605" height="510"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RgR-oP-X1z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="HerdIcon.png" width="48" height="48"/>
+        <image name="Waypoint.png" width="48" height="48"/>
+    </resources>
 </document>
